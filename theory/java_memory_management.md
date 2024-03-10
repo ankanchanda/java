@@ -28,6 +28,7 @@ Both stack and heap are created by JVM and stored in RAM
 
 ### Additional Notes:
 -- temporary variables?? variable within a method
+
 -- Different types of references:
 - storng references
 - weak refernces
