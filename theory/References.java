@@ -1,4 +1,4 @@
-package java_learnings;
+package java_learnings.theory;
 
 import java.lang.ref.WeakReference;
 
