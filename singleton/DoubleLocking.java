@@ -1,7 +1,8 @@
 package java_learnings.singleton;
 
 class DBConnection {
-    private static DBConnection connObj;
+    // private static DBConnection connObj;
+    private static volatile DBConnection connObj;
 
     private DBConnection(){}
 
