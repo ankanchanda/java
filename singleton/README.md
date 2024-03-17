@@ -35,4 +35,9 @@ The objective of this class is to create only 1 and one object. Ex: DB Connectio
     Disadvantage of the solution:
     - all the read writes are happening from memory instead of cache hence it makes it slow a bit
 5. Bill Pugh Solution
+    
+    Uses the concept of eagerly solution and instead of initializing the object in the class, it initializes inside a nested static class, because the static classes are not loaded in the memory before it is used.
+ 
 6. Enum SIngleton
+
+    Enums solve all the problems as they by default has private constructor and Enums are singleton -> one instance per JVM 
