@@ -1,4 +1,4 @@
-package java_learnings.theory;
+package java_learnings.java_memory_management;
 
 import java.lang.ref.WeakReference;
 
