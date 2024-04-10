@@ -1,4 +1,4 @@
-# Multthreading
+# Multithreading
 
 ## Process
 - Process is an instance of the program that is getting executed
