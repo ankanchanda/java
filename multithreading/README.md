@@ -71,3 +71,21 @@ While creating the process "java MainClass" command, a new JVM instance will get
 - increments its counter after successfull execution of the instruction
 
 All these are managed by JVM
+
+## Multithreading
+- allows a program to perform multiple operations at the same time
+- multiple threads share the same resource such as memory space but still can perform task independently
+
+## Benefits of MultiThreading
+- Improved performance by task parallelism
+- Responsiveness
+- Resource sharing
+
+## Challenges of MultiThreading
+- Concurrency issues like deadlock, data inconsistencies
+- Synchronised overhead
+- Testing and debugging is difficult
+
+## Multitasking vs Multithreading
+- process 1 and process 2 is multitasking
+- and inside a task we can create multiple threads to achieve it, it is called as multithreading
