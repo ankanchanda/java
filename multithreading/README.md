@@ -111,8 +111,28 @@ Thread class actually implements runnable, it has all tye methods
 - interrupt()
 etc...
 
-=> Check <a href="MTLearning.java">MTLearning.java</a>
+## implementing runnable interface
 
 Step 1:
-- create a class that implements runnable interface
+- create a class that implements Runnable interface
 - implement the run() method to tell the task which thread has to do
+
+=> Check <a href="MTLearning.java">MTLearning.java</a>
+
+Step 2:
+- create an instance of class that implements Runnable
+- Pass the runnable object to the thread constructor
+- start the thread
+
+=> check <a href="Main.java">Main.java</a>
+
+The start method internally calls the run method, inside the thread, the run method will get invoked
+
+## extending thread class
+Step 1: Create a thread subclass
+- create a class that extends 'Thread' class
+- Override the 'run' method to tell the task which thread has to do
+
+Step 2: Initiate and start the thread
+- Create an instance of the subclass
+- Call the start() method to begin the execution
