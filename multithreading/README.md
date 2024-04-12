@@ -89,3 +89,30 @@ All these are managed by JVM
 ## Multitasking vs Multithreading
 - process 1 and process 2 is multitasking
 - and inside a task we can create multiple threads to achieve it, it is called as multithreading
+
+# Ways to Create Threads
+There are two ways to create a thread
+- implementing Runnable interface
+- extending Thread class
+
+Why two methods?<br>
+=> We can extend only one parent but if you have interface you can implement as many as you want
+
+![Runnable Interface](../assets/runnable_interface.png)
+
+runnable is a functional interface, that means only one abstract method
+
+Thread class actually implements runnable, it has all tye methods
+- init()
+- run()
+- sleep()
+- start()
+- stop()
+- interrupt()
+etc...
+
+=> Check <a href="MTLearning.java">MTLearning.java</a>
+
+Step 1:
+- create a class that implements runnable interface
+- implement the run() method to tell the task which thread has to do
