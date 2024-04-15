@@ -136,3 +136,40 @@ Step 1: Create a thread subclass
 Step 2: Initiate and start the thread
 - Create an instance of the subclass
 - Call the start() method to begin the execution
+
+# Thread Lifecycle
+![thread lifecycle](../assets/thread_lifecycle.png)
+
+**New**<br>
+- Thread has been created but not started
+- It is an object in memory
+
+**Runnable**<br>
+- Thread is ready to run
+- waiting for cpu time
+
+**Running**<br>
+- When thread starts running its code
+- Puts the `MONITOR_LOCKS`
+
+**Blocked**<br>
+- Different scenarios where runnable thread goes into the blocked state
+  - I/O: reading from file or database
+  - Lock acquired: if thread want to lock on resource which is acquired by another thread, it has to wait
+- Whenever thread is blocked, it releases all `MONITOR_LOCKS`
+
+**Waiting**<br>
+- Thread goes into this state when we call `wait()` method, makes it non runnable
+- It goes back to runnable, once we call `notify()` or `notifyAll()` method
+- Releases all `MONITOR_LOCKS`
+
+**Timed Waitinf**<br>
+- Thread waits for specific period of time and then comesback to runnable state, after certaine conditions are met. like `sleep()`, `join()`
+- doesn't release any `MONITOR_LOCKS`
+
+**Terminated**<br>
+- Life of thread is completed, and it cannot be started back again.
+
+
+## MONITOR LOCK:
+- It helps to make sure only 1 thread goes inside the particular section of code(a synchronised block or method).
