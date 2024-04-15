@@ -173,3 +173,9 @@ Step 2: Initiate and start the thread
 
 ## MONITOR LOCK:
 - It helps to make sure only 1 thread goes inside the particular section of code(a synchronised block or method).
+
+
+## Assignment(Producer Consumer Problem)
+Two threads, a producer and a consumer share a common fixed size buffer as a queue<br>
+The producer job is to generate data and put it into the buffer, while the consumer's job is to consume the data from the buffer<br>
+The problem is to make sure that the producer won't produce data if the buffer is full and the consumer won't consume the data if buffer is empty

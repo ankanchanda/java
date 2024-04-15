@@ -1,4 +1,4 @@
-package java_learnings.multithreading.real_example;
+package java_learnings.multithreading.producer_consumer.single_item;
 
 public class Main {
     public static void main(String[] args) {
