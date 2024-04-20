@@ -179,3 +179,14 @@ Step 2: Initiate and start the thread
 Two threads, a producer and a consumer share a common fixed size buffer as a queue<br>
 The producer job is to generate data and put it into the buffer, while the consumer's job is to consume the data from the buffer<br>
 The problem is to make sure that the producer won't produce data if the buffer is full and the consumer won't consume the data if buffer is empty
+- <a href="producer_consumer/buffer/Main.java">Main.java</a>
+- <a href="producer_consumer/buffer/SharedResource.java">SharedResources.java</a>
+
+
+### Why Stop, Resume, Suspend method is deprecated?
+
+- STOP: Terminates the thread abruptly, no lock release, no resource clean up happens
+- SUSPEND: Put the thread on hold(suspend) for temporarily, no lock is released too.
+- RESUME: Used to resume teh execution of suspended thread
+
+Both the operation could led to issues like deadlock
