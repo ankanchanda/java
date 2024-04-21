@@ -194,9 +194,12 @@ Both the operation could led to issues like deadlock
 ## Thread joining
 - When join method is invoked on a thread object. Current thread will be blocked and waits for the specific thread to finish.
 - It is helpful when we want to coordinate between threads or to ensure we complete certain task efore moving ehead
+<a href="ThreadJoining.java">ThreadJoining.java</a>
 
 ## Thread Priority
 - Priority Ranges from 1 to 10
   - Priority 1 => low priority
   - Priority 10 => high priority
 - Even we set the thread priority whilc creation it's not guaranteed to follow any specific order, it's just a hint to thread scheduler which to execute next.(but it's not strict rule)
+- When a new thread is created it inherits the priority from it's parent thread
+<a href="ThreadPriority.java">ThreadPriority.java</a>
