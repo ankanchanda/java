@@ -194,7 +194,7 @@ Both the operation could led to issues like deadlock
 ## Thread joining
 - When join method is invoked on a thread object. Current thread will be blocked and waits for the specific thread to finish.
 - It is helpful when we want to coordinate between threads or to ensure we complete certain task efore moving ehead
-<a href="ThreadJoining.java">ThreadJoining.java</a>
+- <a href="ThreadJoining.java">ThreadJoining.java</a>
 
 ## Thread Priority
 - Priority Ranges from 1 to 10
@@ -202,4 +202,14 @@ Both the operation could led to issues like deadlock
   - Priority 10 => high priority
 - Even we set the thread priority whilc creation it's not guaranteed to follow any specific order, it's just a hint to thread scheduler which to execute next.(but it's not strict rule)
 - When a new thread is created it inherits the priority from it's parent thread
-<a href="ThreadPriority.java">ThreadPriority.java</a>
+- <a href="ThreadPriority.java">ThreadPriority.java</a>
+
+## Daemon Thread
+- Daemon -> something which is running in async manner(behinf)
+- Two types of thread:
+  - User thread(this is what we have been creating so far)
+  - Daemon Thread(to create we need to call setDaemon and pass true)
+- Suppose you have a main thread(user thread) and thread t1(daemon) as soon as main thread finishes the daemon thread will finish its work as well.
+- Daemon thread is alive till any one user thread is alive
+- <a href="DaemonThread.java">DaemonThread.java</a>
+- DaemonThread is helpful for example in java garbage collector is daemon, autosave, logging
