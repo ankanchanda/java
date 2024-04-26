@@ -4,6 +4,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class ReentrantLockConn{
 
+    private ReentrantLockConn(){}
+
     private static class ReentrantLockConnHelper{
         private static final ReentrantLock INSTANCE_OBJECT = new ReentrantLock();
     }

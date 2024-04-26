@@ -220,8 +220,25 @@ if there are two objects of a synchronised shared resources and thread1 executes
 
 ### 4 types of custom locks:
 - Reentrant
-- Read/write
+- Read-Write
 - Semaphore
 - Stamped
 
 These locks doesn't depend on objects like synchronised methods
+
+#### Reentrant lock
+<a href="types_lock/reentrant/SharedResource.java">Reentrant Lock</a>
+
+#### Read-Write lock
+- Shared Lock(Read)
+- Exclusive Lock
+
+| T1/T2 | S(T1) | X(T1) |
+| ----- | ----- | ----- |
+| S(T2) | T1&T2 | T1&!T2 |
+| X(T2) | T1&!T2 | T1&!T2|
+
+- if a shared lock, other thread can take shared lock as well
+- If an exclusive thread is taken by any thread, no other thread can acquire exclusive lock
+- if a shared lock is taken by any thread, no other thread can put exclusive lock
+- if an exclusive lock is taken by any thread, no other thread can take exclusive lock

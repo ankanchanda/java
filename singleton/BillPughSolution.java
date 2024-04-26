@@ -2,6 +2,8 @@ package java_learnings.singleton;
 
 class DBConnection {
 
+    private DBConnection(){}
+
     // it is making use of eager initialization
     // it is solving the disadvantage that even if the class is not used object is being created
     private static class DBConnectionHelper{

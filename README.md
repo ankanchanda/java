@@ -14,7 +14,7 @@ ByteCode -> .class extension
 
 ## JRE
 It has JVM and class libraries
-
+```
           JRE
 |_____________________|
 |   class Libraries   |
@@ -22,7 +22,7 @@ It has JVM and class libraries
 |  |      JVM     |   |
 |  |______________|   |
 |_____________________|
-
+```
 ## JDK
 - programming languages
 - compiler (javac)  -> .class
