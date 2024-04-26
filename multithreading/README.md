@@ -253,3 +253,6 @@ Shared Lock, Exclusive Lock
 
 => Optimistic Lock<br>
 No Lock acquired, keeps a version associated which gets updated when a value is updated
+
+#### Semaphore Lock
+- semaphore allows a thread to go inside critical section but it permits some count of threads to go inside and acquire lock at same time
