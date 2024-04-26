@@ -1,7 +1,7 @@
 package java_learnings.singleton;
 
 class DBConnection{
-    private static DBConnection connObject = new DBConnection();
+    private static DBConnection connObject;
 
     private DBConnection(){}
 
