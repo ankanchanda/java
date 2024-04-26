@@ -39,7 +39,7 @@ public class SharedResource {
     public void consume(){
         try{
             lock.writeLock().lock();
-            System.out.println("Read and Write Lock Acquired by " + Thread.currentThread().getName());
+            System.out.println("Write Lock Acquired by " + Thread.currentThread().getName());
             isAvailable = true;
             Thread.sleep(3000);
         }
@@ -49,7 +49,7 @@ public class SharedResource {
         finally{
             isAvailable = false;
             lock.writeLock().unlock();
-            System.out.println("Read and Write Lock released by " + Thread.currentThread().getName());
+            System.out.println("Write Lock released by " + Thread.currentThread().getName());
         }
     }
     

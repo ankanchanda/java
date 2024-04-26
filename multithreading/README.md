@@ -242,3 +242,14 @@ These locks doesn't depend on objects like synchronised methods
 - If an exclusive thread is taken by any thread, no other thread can acquire exclusive lock
 - if a shared lock is taken by any thread, no other thread can put exclusive lock
 - if an exclusive lock is taken by any thread, no other thread can take exclusive lock
+
+#### Stamped Lock
+- read write lock's capability
+- optimistic read
+
+
+=> pessimistic lock <br>
+Shared Lock, Exclusive Lock
+
+=> Optimistic Lock<br>
+No Lock acquired, keeps a version associated which gets updated when a value is updated
