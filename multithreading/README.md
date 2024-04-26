@@ -256,3 +256,11 @@ No Lock acquired, keeps a version associated which gets updated when a value is 
 
 #### Semaphore Lock
 - semaphore allows a thread to go inside critical section but it permits some count of threads to go inside and acquire lock at same time
+
+### Inter Thread Communication
+=> synchronised -> Monitor Lock -> wait and notify
+=> but for custom lock -> conditoon comes into picture
+
+#### Condition
+- await() = wait()
+- signal() = notify()
