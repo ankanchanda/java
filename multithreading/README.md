@@ -213,3 +213,15 @@ Both the operation could led to issues like deadlock
 - Daemon thread is alive till any one user thread is alive
 - <a href="DaemonThread.java">DaemonThread.java</a>
 - DaemonThread is helpful for example in java garbage collector is daemon, autosave, logging
+
+
+## Locks and semaphores
+if there are two objects of a synchronised shared resources and thread1 executes using object1 and thread2 uses object2, both enters the critical section because lock is acquired on different objects. That's why both the threads will acquire the lock, but if you have a requirement that, no matter same or different object, 1 thread should go inside the critical section, that brings us to custom lock.
+
+### 4 types of custom locks:
+- Reentrant
+- Read/write
+- Semaphore
+- Stamped
+
+These locks doesn't depend on objects like synchronised methods
