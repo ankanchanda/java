@@ -264,3 +264,150 @@ No Lock acquired, keeps a version associated which gets updated when a value is 
 #### Condition
 - await() = wait()
 - signal() = notify()
+
+## Concurrency
+Concurrency can be achieved using:
+- Lock Based Mechanism
+  - Synchronised
+  - Reentrant
+  - Stamped
+  - ReadWrite
+  - Semaphores
+- Lock Free Mechanism
+  - CAS Operation(Compare And Swap)<br>
+    (Java uses the following classes to achieve)
+    - AtomicInteger
+    - AtomicBoolean
+    - AtomicLong
+    - AtomicRefernce
+
+
+- Lock Free Mechanism is fatser than lock based but not an alternative to lock based mechanism.
+- Lock based mechnism can be used in different scenarios, where you have lot of complexity, lot of business logic.
+- Lock Free Mechnism can be used on very specific area
+- Optimistic Concurrency Control is also a lock free protocol which deals with the versions
+
+### CAS Operation(Compare And Swap)
+- it's a low level operation 
+  - supported by CPU
+- It's atomic
+  - single unit
+  - no matter how many core the CPU has, it provides atomicity ragrdless of number of threads are running
+- And all modern processors supports it
+
+It involves 3 main parematers
+- Memory Location
+  - Location where variable is stored
+- Expected Value
+  - value which should be present at the memory
+  - ABA problem is solved using version or timestamp
+- New Value
+  - value to be written in the memory, if the current value matches the expected value
+
+Lets' say there is a memory M1 which stores a value
+
+```
+CAS(memory, expectedValue, newValue){
+  // 1. load or read variable from memory: M1
+  // 2. Compares the loaded data with the expected value if same or not
+  // 3. if they are matching, update the newValue in this Memoty
+}
+```
+
+- Optimistic Locking is inspired by CAS
+- CAS is a CPU operation
+- Optimistic Control Works mostly with DB
+- But in CPU, it has the CAS operation
+
+#### ABA problem
+
+```
+CAS(memory=m1, expectedValue=10, newValue=12){
+  Read m1
+  Compare date in m2 with expectedValue
+  Update if matched
+}
+```
+
+- Lets' say that T1 wanted to run this, and some operation has changed it to some value and then changed it back to 10, now T1 is running it will match the expected and change with the new value
+- the issue is that the 10 is different from the other 10, ABA issue
+- it is resolved using a version or timestamp
+
+### Atomic Variables
+- It means Single or "All or Nothing"
+
+Consider the code <a href="lock_free_mechanism/SharedResources.java">SharedResources.java</a>
+
+- here the counter++ is not atmoic because
+  - it first loads the conter
+  - increments it
+  - assigns it back
+- hence it is not a single unit
+- Consider Thread 1 and Thread 2 is running the piece of code, and both are running parallely
+  - both will read the counter value as 0
+  - now counter value will be 1 and assign back
+  - but it should have been 2 so it's not thread safe
+
+
+### How to make it thread safe?
+- Using lock like synchronised
+- Using lock free operations like AtomicInteger
+  - internally uses CAS
+
+- Whenever you have the use case:
+  - Read
+  - Modify
+  - Update
+
+Atomic can be used
+
+### Volatile
+- Not thread safe
+- You have a CPU, each CPU Core has their individual L1 cache
+- Then there can be L2 cache
+- Then there can be memory(RAM)
+
+```
+   ____________      ____________
+  |            |    |            |
+  | CPU Core 1 |    | CPU Core 2 |
+  |____________|    |____________|
+        |                 |
+        |                 |
+   ____________      ____________
+  |            |    |            |
+  |  L1 Cache  |    |  L1 Cache  |
+  |____________|    |____________|
+
+        |                 |
+        |                 |
+   ______________________________
+  |                              |
+  |           L2 Cache           |
+  |______________________________|
+                  |
+   ______________________________
+  |                              |
+  |         Memory(RAM)          |
+  |______________________________|
+
+```
+
+- Lets say Thread 1 is running on CPU Core 1, Thread 2 is running on CPU Core 2
+ and they are working on a variable X=10
+- Both the thread comes and increments X as X++ so it loads X from meory which is 10 and incremenets it
+- so X becomes 11 and for thread 1 execution and then puts on its own L1 cache
+- Now Thread2 comes and is inrementing X, so it will check if its L1 cache has X if not it will check with L2 , if not then it will check in memory which will give the value 10
+- so it will read the value 10 and increment the value which will be 11 and there is an issue here
+
+So Volatile makes sure that Read and Write should happen from Memory, so the changes done by 1 thread is visible to another threads as well. But it doesn't provide thread safety
+
+So CAS alone doesn't guarantee thread safety, it just guarantees Atomicity. CAS + Volatile guarantees thread safety + Atomicity .
+
+### Concurrent Collections
+- every collections has their respective thread safe version
+  - PriorityQueue -> PriorityBlockingQueue
+  - ArrayDeque -> ConurrentLinkedDeque
+  - Vector and Stack are already thread safe
+
+![alt text](../assets/concurrent_collections.png)
