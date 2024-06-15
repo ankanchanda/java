@@ -32,7 +32,7 @@ public class SharedResource {
         System.out.println("Item " + item + " added to queue by " + Thread.currentThread().getName());
         System.out.println("addItem > Notifying all the threads waiting");
         item += 1;
-        notify();
+        notifyAll();
     }
 
     public synchronized void consumeItem(){
@@ -51,7 +51,7 @@ public class SharedResource {
         int consumedItem = queue.poll();
         System.out.println("Item " + consumedItem + " consumed by " + Thread.currentThread().getName());
         System.out.println("consumeItem > Notifying all the threads waiting");
-        notify();
+        notifyAll();
     }
 
 }
